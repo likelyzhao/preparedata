@@ -19,5 +19,5 @@ class Preparedata
 	int ImgBinary();
 	private:
 	std::vector <std::string> imgNameList;
-	std::vector <CvRect>  imgLocList;		
+	std::vector <std::vector<CvRect> > imgLocList;		
 };

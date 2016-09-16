@@ -13,27 +13,11 @@ int main()
 	Preparedata myprepare;
 	myprepare.ReadList("./FileLists/list.txt");
 
+	
 	return 0;
 
 
-	IplImage * img;
-	FILE * fp = fopen("./FileLists/list.txt","r");	
-	if (fp == NULL)
-	{
-		printf("open file error\n");
-		return -1;
-	}
-	
-	while (feof(fp) != TRUE)
-	{
-		char tempfileName[255];
-		fscanf(fp,"%s\n",tempfileName);
-		printf("%s\n",tempfileName);
-	}
-
-	fclose(fp);
-
-
+IplImage * img;
 
 
 
