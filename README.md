@@ -13,6 +13,6 @@ Tools feaures are:
 4. noise
 5. scale
 6. random crop
-7.binary threshold
+7. binary threshold
 
 - saving the resized imgs and lable imgs
