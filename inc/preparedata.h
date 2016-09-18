@@ -11,6 +11,10 @@ class Preparedata
 	int ReadList(std::string listName);
 
 	int CreatTrainingPair(std::string outDir);
+	
+	std::string GetImgNamebyIdx(int idx);
+	std::vector<CvRect> GetImgLocbyIdx(int idx);
+	
 	int ImgRotateALL();
 	int ImgAddBlurALL();
 	int ImgPrespectiveALL();
