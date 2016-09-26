@@ -14,7 +14,7 @@ int main()
 	//myprepare.CreatTrainingPair("/home/zzj");
 	myprepare.ReadList("./FileLists/list.txt");
 	printf("testing\n");	
-
+	myprepare.visualCheck();
 	
 	return 0;
 

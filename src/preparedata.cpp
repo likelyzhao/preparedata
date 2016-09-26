@@ -38,7 +38,7 @@ int Preparedata::ReadList(std::string listName)
 		imgNameList.push_back(string(tempfileName));	
 	}
 	fclose(fp);
-printf("total training sample num= %d\n",(int)imgNameList.size());
+    printf("total training sample num= %d\n",(int)imgNameList.size());
 	for(int i =0 ;i<imgNameList.size();i++)
 	{
 		size_t pos = imgNameList[i].find(".jpg");
@@ -76,24 +76,6 @@ printf("total training sample num= %d\n",(int)imgNameList.size());
 	}
 	
 	 
-	/////testing 
-	int idx = 4000;
-	IplImage * imgtest = cvLoadImage(imgNameList[idx].c_str());
-	if (imgtest == NULL)
-	{
-		printf("reading img error\n");
-    }			
-	std::vector<CvRect> tempLoc = imgLocList[idx];
-	for(int j =0;j<tempLoc.size();j++)
-	{
-		cvRectangleR(imgtest,tempLoc[j],cvScalar(255,0,0,0));
-	}
-
-	cvNamedWindow("test2",CV_WINDOW_FREERATIO);
-	cvShowImage("test2",imgtest);
-	waitKey(-1);
-	cvReleaseImage(&imgtest);
-
 
 };
 
@@ -106,6 +88,44 @@ std::string Preparedata::GetImgNamebyIdx(int idx)
 std::vector<CvRect> Preparedata::GetImgLocbyIdx(int idx)
 {
 	return imgLocList[idx];
+}
+
+int Preparedata::visualCheck()
+{
+	/////testing 
+	for (int i = 0;i< imgNameList.size();i++)
+	{
+	IplImage * imgtest = cvLoadImage(imgNameList[i].c_str());
+	if (imgtest == NULL)
+	{
+		printf("reading img error\n");
+	}				
+	std::vector<CvRect> tempLoc = imgLocList[i];
+	
+	for(int j =0;j<tempLoc.size();j++)
+	{
+		cvRectangleR(imgtest,tempLoc[j],cvScalar(255,0,0,0));
+	}
+
+	cvNamedWindow("test2",CV_WINDOW_FREERATIO);
+	cvShowImage("test2",imgtest);
+	int keyRespose= waitKey(-1);
+	if (keyRespose == 'd')
+	{
+		remove(imgNameList[i].c_str());
+		size_t pos = imgNameList[i].find(".jpg");
+		std::string txtname = imgNameList[i];
+		txtname.replace(pos,4,".txt");
+		remove(txtname.c_str());
+	}
+	cvReleaseImage(&imgtest);
+
+
+	}
+
+
+
+
 }
 
 int Preparedata::CreatTrainingPair(std::string outdir)

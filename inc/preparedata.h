@@ -21,6 +21,7 @@ class Preparedata
 	int ImgAddNoiseALL();
 	int ImgScaleALL();
 	int ImgBinary();
+	int visualCheck();
 	private:
 	std::vector <std::string> imgNameList;
 	std::vector <std::vector<CvRect> > imgLocList;		
